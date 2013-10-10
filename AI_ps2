@@ -1,0 +1,39 @@
+Question 1: 
+If the goal were developing word puzzle one word at a time, breath first search would be more appropriate because we can examine all possibilities of 3-letter word on a level before moving on the the next. In other words, since we don't have to search for a specific word, examining node by node's children would save us from hitting the wall too soon (puzzle is full) and having to backing up levels to find more options. 
+
+If the goal were to insert the word "tab" in the puzzle, then depth-first search works better because we can start with 1 word from depth 1 and start inserting word down the tree until we are able to insert the word "tab." We have a good chance of hitting the word "tab" as soon as a word ending or beginning with "t" is encountered. I think this will be less costly than examining all children of 1 node to find the word "tab" before moving to the next node horizontally across the tree. 
+
+Question 2: 
+
+Step	Set of Node		Expand		Explored
+1	    S0			      S		      empty
+2	    C1 B2 A3		  C		      S
+3 	  B2 A3 G21		  B		      S, C
+4	    A3 E6 G21		  A		      S, C, B
+5	    E6 D9 G21		  E		      S, C, B, A
+6	    D9 G14 G21		D		      S, C, B, A, E
+7 	  F10 G14 G21		F		      S, C, B, A, E, D
+8	    G11 G14 G21		G		      S, C, B, A, E, D, F
+
+Expand G we find the goal with cost of 11. So the path is: 
+S --> A --> D --> F --> G
+
+Question 3: Applying A* search for route from Lugoj to Bucharest 
+Step	Set of Node   Expand	Explored		      g + h = f
+1	    L244		      L	      L			            0 + 244 = 244
+2	    M311		      M	      L, M			        70 + 241 = 311
+3	    D387		      D	      L, M, D			      145 + 242 = 387
+4	    C325		      C	      L, M, D, C		    265 + 160 = 325
+5	    P413 R606	    P	      L, M, D, C, P		  413 + 193 = 606 ( R )
+							                                403 + 10 = 413 ( P )
+6 	  B504 R606	    B	      L, M, D, C, P, B	504 + 0 = 504
+
+Letter	City
+L	      Lugoj
+M	      Mehadia
+D	      Dobreta
+C	      Cravoia
+P	      Pitesti
+R	      Rimnicu Vilcea
+B	      Bucharest
+
